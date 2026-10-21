@@ -1,0 +1,24 @@
+#---------------------------------------------------------------------
+# Impide navegar en los direcctorios del sitio
+#---------------------------------------------------------------------
+Options All -Indexes
+RewriteEngine on
+
+
+#---------------------------------------------------------------------
+# En caso de error presentar páginas personalizadas
+#---------------------------------------------------------------------
+ErrorDocument 400 http://localhost:8088/2026/mybox/errores/400.php
+ErrorDocument 403 http://localhost:8088/2026/mybox/errores/403.php
+ErrorDocument 404 http://localhost:8088/2026/mybox/errores/404.php
+ErrorDocument 500 http://localhost:8088/2026/mybox/errores/500.php
+
+
+#---------------------------------------------------------------------
+# Evita tener acceso a los archivos con las siguientes extensiones
+#---------------------------------------------------------------------
+<FilesMatch "(\.(bak|config|inc|ini|log|sh|sql)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
