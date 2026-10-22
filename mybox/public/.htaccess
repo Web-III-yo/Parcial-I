@@ -1,0 +1,10 @@
+Options -Indexes -MultiViews
+RewriteEngine On
+AddType image/avif .avif
+php_value upload_max_filesize 20M
+php_value post_max_size 22M
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
